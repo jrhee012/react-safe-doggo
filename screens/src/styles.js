@@ -1,44 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-/*
- * #F5FCFF #333333
- */
-// const day  = '#F5FCFF';
-// const dark = '#333333';
-// let defaultStyles = {
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: '#F5FCFF',
-//     },
-//     text: {
-//         fontSize: 15,
-//         textAlign: 'center',
-//         color: '#333333',
-//         margin: 10,
-//     },
-// };
-
-// export const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: '#F5FCFF',
-//     },
-//     welcome: {
-//         fontSize: 20,
-//         textAlign: 'center',
-//         margin: 10,
-//     },
-//     instructions: {
-//         textAlign: 'center',
-//         color: '#333333',
-//         marginBottom: 5,
-//     },
-// });
-
 export const updateStyles = () => {
     const hourNow = new Date().getHours();
     const light  = '#FFFFFF';
@@ -47,25 +8,61 @@ export const updateStyles = () => {
     let defaultStyles = {
         container: {
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
+            // justifyContent: 'center',
+            // alignItems: 'center',
             backgroundColor: light,
         },
-        text: {
-            fontSize: 15,
-            textAlign: 'center',
+        title: {
+            fontSize: 25,
+            textAlign: 'left',
             color: dark,
-            margin: 10,
+            margin: 20,
+        },
+        body: {
+            fontSize: 15,
+            textAlign: 'left',
+            color: dark,
+            margin: 20,
         },
     };
 
     if (hourNow < 17 || hourNow < '17') {
         defaultStyles.container.backgroundColor = light;
-        defaultStyles.text.color = dark;
+        defaultStyles.title.color = dark;
+        defaultStyles.body.color = dark;
     } else {
         defaultStyles.container.backgroundColor = dark;
-        defaultStyles.text.color = light;
+        defaultStyles.title.color = light;
+        defaultStyles.body.color = light;
     }
 
     return StyleSheet.create(defaultStyles);
+}
+
+/*
+headerStyle: {
+  backgroundColor: '#f4511e',
+},
+headerTintColor: '#fff',
+headerTitleStyle: {
+  fontWeight: 'bold',
+},
+ */
+export const navigationOptions = title => {
+    let options = {
+        title: null,
+        headerStyle: {
+            backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    };
+
+    if (title) {
+        options.title = title;
+    }
+
+    return options;
 }

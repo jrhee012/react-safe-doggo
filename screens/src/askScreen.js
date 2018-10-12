@@ -3,7 +3,7 @@ import { Text, View, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { updateStyles, navigationOptions } from './styles';
 
-class SettingsScreen extends Component {
+class SearchScreen extends Component {
     static navigationOptions = navigationOptions('Settings');
 
     render() {
@@ -17,7 +17,7 @@ class SettingsScreen extends Component {
     }
 }
 
-export const SettingsStack = createStackNavigator({
-    Settings: SettingsScreen,
+export const SearchStack = createStackNavigator({
+    Ask: SearchScreen,
     // Details: DetailsScreen,
 });

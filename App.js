@@ -9,7 +9,12 @@
 // import React, { Component } from 'react';
 // import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
-import { HomeStack, SettingsStack } from './screens';
+import {
+    HomeStack,
+    SettingsStack,
+    SearchStack,
+    navigationOptions
+} from './screens';
 
 // type Props = {};
 // export default class App extends Component {
@@ -21,9 +26,21 @@ import { HomeStack, SettingsStack } from './screens';
 export default createBottomTabNavigator(
     {
         Home: HomeStack,
+        Search: SearchStack,
         Settings: SettingsStack,
     },
     {
-        /* Other configuration remains unchanged */
-    }
+        // navigationOptions: navigationOptions('Home'),
+        tabBarOptions: {
+            activeTintColor: '#ffffff',
+            inactiveTintColor: '#333333',
+            // activeBackgroundColor: '#ffffff',
+            labelStyle: {
+                fontSize: 12,
+            },
+            style: {
+                backgroundColor: '#f4511e',
+            },
+        },
+    },
 );
