@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ActivityIndicator } from 'react-native';
+import {
+    Text,
+    View,
+    Image,
+    Button,
+    ActivityIndicator
+} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { updateStyles, navigationOptions } from './styles';
 import { getCityName, getTemperature } from '../../utils'
@@ -56,8 +62,6 @@ class HomeScreen extends Component {
 
     static navigationOptions = navigationOptions('Home');
 
-    // navigationOptions.title = 'test';
-
     render() {
         const styles = updateStyles();
 
@@ -65,6 +69,9 @@ class HomeScreen extends Component {
             return (
                 <View style={ styles.container }>
                     <View style={{ height: 50, padding: 20 }}/>
+                    <Text style={ styles.bodyCentered }>
+                        Loading...
+                    </Text>
                     <ActivityIndicator/>
                 </View>
             )
@@ -75,6 +82,11 @@ class HomeScreen extends Component {
                 <Text style={ styles.title }>
                     { this.state.cityName }
                 </Text>
+                <Image
+                    style={ styles.image }
+                    resizeMode='cover'
+                    source={require('../../assets/img/dog.gif')}
+                />
                 <Text style={ styles.body }>
                     Current Temperature: { this.state.temperature.temp } { '\u00b0' }F
                 </Text>

@@ -24,6 +24,28 @@ export const updateStyles = () => {
             color: dark,
             margin: 20,
         },
+        bodyCentered: {
+            fontSize: 15,
+            textAlign: 'center',
+            color: dark,
+            margin: 20,
+        },
+        image: {
+            flex: 0.5,
+            height: undefined,
+            width: undefined,
+            alignSelf: 'stretch',
+            marginLeft: 20,
+            marginRight: 20,
+        },
+        searchboxTextInput: {
+            marginLeft: 20,
+            marginRight: 20,
+            fontSize: 15,
+        },
+        searchboxButton:{
+            marginRight: 20,
+        },
     };
 
     if (hourNow < 17 || hourNow < '17') {
@@ -39,15 +61,6 @@ export const updateStyles = () => {
     return StyleSheet.create(defaultStyles);
 }
 
-/*
-headerStyle: {
-  backgroundColor: '#f4511e',
-},
-headerTintColor: '#fff',
-headerTitleStyle: {
-  fontWeight: 'bold',
-},
- */
 export const navigationOptions = title => {
     let options = {
         title: null,
