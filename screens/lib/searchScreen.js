@@ -93,7 +93,6 @@ class SearchScreen extends Component {
                             onPress={() => this.submitText()}
                         >
                             <Text style={styles.submitButtonText}>
-                                {/* {' '}Search{' '} */}
                                 Search
                             </Text>
                         </TouchableOpacity>

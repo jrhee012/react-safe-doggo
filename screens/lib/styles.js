@@ -85,7 +85,8 @@ export const updateStyles = () => {
             borderRadius: 10,
         },
         submitButtonText: {
-            color: 'white'
+            color: 'white',
+            alignSelf: 'center',
         },
         searchPageTrendingText: {
             margin: 20,
