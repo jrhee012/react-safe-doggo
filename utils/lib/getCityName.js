@@ -1,7 +1,11 @@
+import Config from 'react-native-config'
 import { fetchGetURL } from './fetchCalls';
+import log from './logging';
 
 const getURL = (lat, long) => {
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&sensor=true&key=AIzaSyAPrvzSC1NSyD5x5GIXi33wlkPa6-HL0Ac`;
+    const apiKey = Config.GOOGLE_MAPS_API_KEY;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&sensor=true&key=${apiKey}`;
+
     return url;
 }
 
@@ -14,7 +18,7 @@ export const getCityName = async (lat, long) => {
         let formattedAddress = response.results[7].formatted_address;
         cityName = formattedAddress;
     } catch (e) {
-        console.error(e);
+        log.error(e);
     }
 
     return cityName;

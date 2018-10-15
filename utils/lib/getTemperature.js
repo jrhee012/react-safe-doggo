@@ -1,9 +1,12 @@
+import Config from 'react-native-config'
 import { fetchGetURL } from './fetchCalls';
+import log from './logging';
 
 const getURL = (lat, long) => {
-    const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&APPID=6f31a9738232e5edd96eb2bbc1edd406`
+    const apiKey = Config.OPEN_WEATHER_MAP_API_KEY;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&APPID=${apiKey}`
 
-    return URL;
+    return url;
 }
 
 export const getTemperature = async (lat, long) => {
@@ -15,7 +18,7 @@ export const getTemperature = async (lat, long) => {
         // console.log('weather: ', response);
         temp = response.main;
     } catch (e) {
-        console.error(e);
+        log.error(e);
     }
 
     return temp;

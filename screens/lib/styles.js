@@ -1,35 +1,47 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet } from 'react-native';
 
-export const updateStyles = () => {
-    const hourNow = new Date().getHours();
-    const light  = '#FFFFFF';
+const updateColor = () => {
+    // TODO: ADD COLOR THEME CHANGE BASED ON TIME
+    // const hourNow = new Date().getHours();
+    const light = '#FFFFFF';
     const dark = '#333333';
+
+    return {
+        backgroundColor: light,
+        textColor: dark,
+    };
+}
+
+export const updateStyles = () => {
     const baseColor = '#f4511e';
+    const colorScheme = updateColor();
+    const backgroundColor = colorScheme.backgroundColor;
+    const textColor = colorScheme.textColor;
 
     let defaultStyles = {
         container: {
             flex: 1,
             // justifyContent: 'center',
             // alignItems: 'center',
-            backgroundColor: light,
+            backgroundColor: backgroundColor,
         },
         title: {
             fontSize: 25,
             textAlign: 'left',
-            color: dark,
+            color: textColor,
             margin: 20,
         },
         body: {
             fontSize: 15,
             textAlign: 'left',
-            color: dark,
+            color: textColor,
             margin: 20,
         },
         bodyCentered: {
             fontSize: 15,
             textAlign: 'center',
-            color: dark,
+            color: textColor,
             margin: 20,
         },
         image: {

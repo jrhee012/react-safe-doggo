@@ -1,7 +1,7 @@
-import { HomeStack } from './src/homeScreen';
-import { SettingsStack } from './src/settingsScreen';
-import { SearchStack } from './src/searchScreen';
-import { updateStyles, navigationOptions } from './src/styles';
+import { HomeStack } from './lib/homeScreen';
+import { SettingsStack } from './lib/settingsScreen';
+import { SearchStack } from './lib/searchScreen';
+import { updateStyles, navigationOptions } from './lib/styles';
 
 module.exports = {
     HomeStack,

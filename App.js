@@ -6,8 +6,6 @@
  * @flow
  */
 
-// import React, { Component } from 'react';
-// import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import {
     HomeStack,
@@ -15,13 +13,6 @@ import {
     SearchStack,
     navigationOptions
 } from './screens';
-
-// type Props = {};
-// export default class App extends Component {
-//     render() {
-//         return <RootStack />;
-//     }
-// }
 
 export default createBottomTabNavigator(
     {

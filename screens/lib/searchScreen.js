@@ -52,7 +52,6 @@ class SearchScreen extends Component {
     };
 
     submitText() {
-        console.log('search: ', this.state.searchQuery);
         this.props.navigation.navigate('Results', {
             searchQuery: this.state.searchQuery,
         });
@@ -94,14 +93,16 @@ class SearchScreen extends Component {
                             onPress={() => this.submitText()}
                         >
                             <Text style={styles.submitButtonText}>
-                                {' '}
-                                Search{' '}
+                                {/* {' '}Search{' '} */}
+                                Search
                             </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View>
-                    <Text style={styles.searchPageTrendingText}>Trending</Text>
+                    <Text style={styles.searchPageTrendingText}>
+                        Trending
+                    </Text>
                 </View>
                 <View style={{ flexDirection: 'column' }}>
                     <View style={styles.searchPageBoxView}>
@@ -194,8 +195,13 @@ class ResultsScreen extends Component {
     }
 }
 
-export const SearchStack = createStackNavigator({
-    Search: SearchScreen,
-    Results: ResultsScreen,
-    Categories: CategoriesScreen,
-});
+export const SearchStack = createStackNavigator(
+    {
+        Search: SearchScreen,
+        Results: ResultsScreen,
+        Categories: CategoriesScreen,
+    },
+    {
+        initialRouteName: 'Search',
+    },
+);

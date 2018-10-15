@@ -17,7 +17,12 @@ class SettingsScreen extends Component {
     }
 }
 
-export const SettingsStack = createStackNavigator({
-    Settings: SettingsScreen,
-    // Details: DetailsScreen,
-});
+export const SettingsStack = createStackNavigator(
+    {
+        Settings: SettingsScreen,
+        // Details: DetailsScreen,
+    },
+    {
+        initialRouteName: 'Settings',
+    },
+);
