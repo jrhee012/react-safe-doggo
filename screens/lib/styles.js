@@ -121,6 +121,13 @@ export const updateStyles = () => {
             borderWidth: 1,
             borderRadius: 10,
         },
+        resultslist: {
+            fontSize: 15,
+            // padding: 10,
+            marginTop: 10,
+            marginLeft: 20,
+            marginRight: 20,
+        }
     };
 
     // if (hourNow < 17 || hourNow < '17') {

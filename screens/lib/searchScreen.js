@@ -183,7 +183,7 @@ class ResultsScreen extends Component {
         }
 
         if (searchResult !== null) {
-            this.setState({ results: searchResult })
+            this.results = searchResult;
         }
 
         this.setState({ isLoading: false });
@@ -193,8 +193,6 @@ class ResultsScreen extends Component {
 
     render() {
         const styles = updateStyles();
-
-        console.log('result state: ', this.state);
 
         if (this.state.isLoading) {
             return (
@@ -209,8 +207,14 @@ class ResultsScreen extends Component {
         return (
             <ScrollView style={styles.container}>
                 <FlatList
-                    data={this.state.results}
-                    renderItem={({ item }) => <Text>{item.name}</Text>}
+                    data={this.results}
+                    renderItem={({ item }) => {
+                        return (
+                            <Text style={styles.resultslist}>
+                                {item.name}
+                            </Text>
+                        )
+                    }}
                 />
             </ScrollView>
         )
