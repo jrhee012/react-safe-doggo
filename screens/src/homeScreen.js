@@ -98,7 +98,9 @@ class HomeScreen extends Component {
     }
 }
 
-export const HomeStack = createStackNavigator({
-    Home: HomeScreen,
-    // Details: DetailsScreen,
-});
+export const HomeStack = createStackNavigator(
+    {
+        Home: HomeScreen,
+        // Details: DetailsScreen,
+    }
+);

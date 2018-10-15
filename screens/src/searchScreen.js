@@ -28,10 +28,28 @@ class SearchScreen extends Component {
     }
 
     componentDidMount() {
-        this.setState({isLoading: false});
+        this.setState({ isLoading: false });
     }
 
-    static navigationOptions = navigationOptions('Search');
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'Search',
+            headerStyle: {
+                backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+            headerRight: (
+                <Button
+                    onPress={() => navigation.navigate('Categories')}
+                    title="Category"
+                    color="#fff"
+                />
+            ),
+        }
+    };
 
     submitText() {
         console.log('search: ', this.state.searchQuery);
@@ -46,13 +64,11 @@ class SearchScreen extends Component {
         if (this.state.isLoading) {
             return (
                 <View style={styles.container}>
-                    <View style={{ height: 50, padding: 20 }}/>
-                    <Text style={styles.bodyCentered}>
-                        Loading...
-                    </Text>
-                    <ActivityIndicator/>
+                    <View style={{ height: 50, padding: 20 }} />
+                    <Text style={styles.bodyCentered}>Loading...</Text>
+                    <ActivityIndicator />
                 </View>
-            )
+            );
         }
 
         return (
@@ -66,21 +82,26 @@ class SearchScreen extends Component {
                             style={styles.input}
                             containerStyle={{ flexGrow: 1 }}
                             placeholder="Type here to translate!"
-                            onChangeText={(text) => this.setState({ searchQuery: text })}
+                            onChangeText={text =>
+                                this.setState({ searchQuery: text })
+                            }
+                            onSubmitEditing={() => this.submitText()}
                         />
                     </View>
                     <View style={{ flex: 0.25 }}>
                         <TouchableOpacity
                             style={styles.submitButton}
-                            onPress={() => this.submitText()}>
-                            <Text style={styles.submitButtonText}> Search </Text>
+                            onPress={() => this.submitText()}
+                        >
+                            <Text style={styles.submitButtonText}>
+                                {' '}
+                                Search{' '}
+                            </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View>
-                    <Text style={styles.searchPageTrendingText}>
-                        Trending
-                    </Text>
+                    <Text style={styles.searchPageTrendingText}>Trending</Text>
                 </View>
                 <View style={{ flexDirection: 'column' }}>
                     <View style={styles.searchPageBoxView}>
@@ -110,6 +131,33 @@ class SearchScreen extends Component {
                 </View>
             </ScrollView>
         );
+    }
+}
+
+class CategoriesScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            // searchQuery: props.navigation.getParam('searchQuery', ''),
+            error: null,
+        };
+    }
+
+    static navigationOptions = navigationOptions('Categories');
+
+    render() {
+        const styles = updateStyles();
+
+        return (
+            <View style={styles.container}>
+                <View style={{ height: 50, padding: 20 }} />
+                <Text style={styles.bodyCentered}>
+                    Loading...!!!
+                </Text>
+                <ActivityIndicator />
+            </View>
+        )
     }
 }
 
@@ -149,4 +197,5 @@ class ResultsScreen extends Component {
 export const SearchStack = createStackNavigator({
     Search: SearchScreen,
     Results: ResultsScreen,
+    Categories: CategoriesScreen,
 });
