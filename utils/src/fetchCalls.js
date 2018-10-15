@@ -14,3 +14,7 @@ export const fetchGetURL = async url => {
 
     return result;
 }
+
+export const fetchSearchQuery = async query => {
+
+}

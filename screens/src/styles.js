@@ -48,15 +48,15 @@ export const updateStyles = () => {
         },
     };
 
-    if (hourNow < 17 || hourNow < '17') {
-        defaultStyles.container.backgroundColor = light;
-        defaultStyles.title.color = dark;
-        defaultStyles.body.color = dark;
-    } else {
-        defaultStyles.container.backgroundColor = dark;
-        defaultStyles.title.color = light;
-        defaultStyles.body.color = light;
-    }
+    // if (hourNow < 17 || hourNow < '17') {
+    //     defaultStyles.container.backgroundColor = light;
+    //     defaultStyles.title.color = dark;
+    //     defaultStyles.body.color = dark;
+    // } else {
+    //     defaultStyles.container.backgroundColor = dark;
+    //     defaultStyles.title.color = light;
+    //     defaultStyles.body.color = light;
+    // }
 
     return StyleSheet.create(defaultStyles);
 }

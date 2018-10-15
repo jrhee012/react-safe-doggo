@@ -4,7 +4,8 @@ import {
     View,
     Button,
     TextInput,
-    ActivityIndicator
+    ActivityIndicator,
+    ScrollView,
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { updateStyles, navigationOptions } from './styles';
@@ -54,7 +55,7 @@ class SearchScreen extends Component {
         }
 
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text style={styles.body}>
                     Search Screen
                 </Text>
@@ -77,7 +78,26 @@ class SearchScreen extends Component {
                         />
                     </View>
                 </View>
-            </View>
+                <View style={{ flexDirection: 'column' }}>
+                    <View style={{ flexDirection: 'row', height: 200 }}>
+                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                            <Text>HI</Text>
+                        </View>
+                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                            <Text>HI</Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', height: 200 }}>
+                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                            <Text>HI</Text>
+
+                        </View>
+                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                            <Text>HI</Text>
+                        </View>
+                    </View>
+                </View>
+            </ScrollView>
         );
     }
 }
@@ -95,6 +115,8 @@ class ResultsScreen extends Component {
     componentDidMount() {
         this.setState({isLoading: false});
     }
+
+    static navigationOptions = navigationOptions('Results');
 
     render() {
         const styles = updateStyles();
