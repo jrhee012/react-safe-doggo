@@ -7,9 +7,11 @@ import {
     TextInput,
     ActivityIndicator,
     ScrollView,
+    FlatList,
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { updateStyles, navigationOptions } from './styles';
+import { webSearch } from '../../utils'
 
 class SearchScreen extends Component {
     constructor(props) {
@@ -164,6 +166,7 @@ class CategoriesScreen extends Component {
 class ResultsScreen extends Component {
     constructor(props) {
         super(props);
+        this.results = null;
         this.state = {
             isLoading: true,
             searchQuery: props.navigation.getParam('searchQuery', ''),
@@ -171,8 +174,19 @@ class ResultsScreen extends Component {
         };
     }
 
-    componentDidMount() {
-        this.setState({isLoading: false});
+    async componentDidMount() {
+        let searchResult = null;
+        try {
+            searchResult = await webSearch(this.state.searchQuery);
+        } catch (e) {
+            console.error(e);
+        }
+
+        if (searchResult !== null) {
+            this.setState({ results: searchResult })
+        }
+
+        this.setState({ isLoading: false });
     }
 
     static navigationOptions = navigationOptions('Results');
@@ -182,14 +196,23 @@ class ResultsScreen extends Component {
 
         console.log('result state: ', this.state);
 
+        if (this.state.isLoading) {
+            return (
+                <View style={styles.container}>
+                    <View style={{ height: 50, padding: 20 }} />
+                    <Text style={styles.bodyCentered}>Loading...</Text>
+                    <ActivityIndicator />
+                </View>
+            );
+        }
+
         return (
-            <View style={styles.container}>
-                <View style={{ height: 50, padding: 20 }}/>
-                <Text style={styles.bodyCentered}>
-                    Loading...
-                </Text>
-                <ActivityIndicator/>
-            </View>
+            <ScrollView style={styles.container}>
+                <FlatList
+                    data={this.state.results}
+                    renderItem={({ item }) => <Text>{item.name}</Text>}
+                />
+            </ScrollView>
         )
     }
 }
