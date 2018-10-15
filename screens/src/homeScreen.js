@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
+    ScrollView,
     Image,
     Button,
     ActivityIndicator
@@ -69,7 +70,7 @@ class HomeScreen extends Component {
             return (
                 <View style={ styles.container }>
                     <View style={{ height: 50, padding: 20 }}/>
-                    <Text style={ styles.bodyCentered }>
+                    <Text style={styles.bodyCentered}>
                         Loading...
                     </Text>
                     <ActivityIndicator/>
@@ -78,19 +79,21 @@ class HomeScreen extends Component {
         }
 
         return (
-            <View style={ styles.container }>
-                <Text style={ styles.title }>
-                    { this.state.cityName }
+            <ScrollView style={styles.container}>
+                <Text style={styles.title}>
+                    {this.state.cityName}
                 </Text>
-                <Image
-                    style={ styles.image }
-                    resizeMode='cover'
-                    source={require('../../assets/img/dog.gif')}
-                />
-                <Text style={ styles.body }>
-                    Current Temperature: { this.state.temperature.temp } { '\u00b0' }F
+                <View>
+                    <Image
+                        style={styles.image}
+                        resizeMode='cover'
+                        source={require('../../assets/img/dog.gif')}
+                    />
+                </View>
+                <Text style={styles.body}>
+                    Current Temperature: {this.state.temperature.temp} {'\u00b0'}F
                 </Text>
-            </View>
+            </ScrollView>
         );
     }
 }

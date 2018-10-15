@@ -10,7 +10,7 @@ class SettingsScreen extends Component {
         const styles = updateStyles();
 
         return (
-            <View style={ styles.container }>
+            <View style={styles.container}>
                 <Text>Settings Screen</Text>
             </View>
         );

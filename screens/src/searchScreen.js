@@ -3,6 +3,7 @@ import {
     Text,
     View,
     Button,
+    TouchableOpacity,
     TextInput,
     ActivityIndicator,
     ScrollView,
@@ -56,43 +57,53 @@ class SearchScreen extends Component {
 
         return (
             <ScrollView style={styles.container}>
-                <Text style={styles.body}>
+                {/* <Text style={styles.body}>
                     Search Screen
-                </Text>
+                </Text> */}
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ flex: 0.75 }}>
                         <TextInput
-                            style={styles.searchboxTextInput}
-                            containerStyle={{flexGrow: 1}}
+                            style={styles.input}
+                            containerStyle={{ flexGrow: 1 }}
                             placeholder="Type here to translate!"
-                            // multiline={true}
-                            onChangeText={(text) => this.setState({searchQuery: text})}
-                            // onSubmitEditing={this.submitText()}
+                            onChangeText={(text) => this.setState({ searchQuery: text })}
                         />
                     </View>
                     <View style={{ flex: 0.25 }}>
-                        <Button
-                            style={styles.searchboxButton}
-                            title='Search'
-                            onPress={() => this.submitText()}
-                        />
+                        <TouchableOpacity
+                            style={styles.submitButton}
+                            onPress={() => this.submitText()}>
+                            <Text style={styles.submitButtonText}> Search </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
+                <View>
+                    <Text style={styles.searchPageTrendingText}>
+                        Trending
+                    </Text>
+                </View>
                 <View style={{ flexDirection: 'column' }}>
-                    <View style={{ flexDirection: 'row', height: 200 }}>
-                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                    <View style={styles.searchPageBoxView}>
+                        <View style={styles.searchPageBoxLeft}>
                             <Text>HI</Text>
                         </View>
-                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                        <View style={styles.searchPageBoxRight}>
                             <Text>HI</Text>
                         </View>
                     </View>
-                    <View style={{ flexDirection: 'row', height: 200 }}>
-                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                    <View style={styles.searchPageBoxView}>
+                        <View style={styles.searchPageBoxLeft}>
                             <Text>HI</Text>
-
                         </View>
-                        <View style={{ flex: 0.5, alignItems: 'center' }}>
+                        <View style={styles.searchPageBoxRight}>
+                            <Text>HI</Text>
+                        </View>
+                    </View>
+                    <View style={styles.searchPageBoxView}>
+                        <View style={styles.searchPageBoxLeft}>
+                            <Text>HI</Text>
+                        </View>
+                        <View style={styles.searchPageBoxRight}>
                             <Text>HI</Text>
                         </View>
                     </View>
